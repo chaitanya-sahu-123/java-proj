@@ -1,7 +1,10 @@
-FROM node:14
-WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["javac", "Hello.java"]
+
+FROM openjdk:11
+
+WORKDIR /app
+
+COPY Hello.java .
+
+RUN javac Hello.java
+
+CMD ["java", "Hello"]
